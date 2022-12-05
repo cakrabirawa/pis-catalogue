@@ -49,9 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'c_core_main';
-$route['c_activated/(:any)'] = "c_activated/u/$1";
-$route['comot/(:any)/(:any)'] = 'c_gbox_upload_list/gf_download_email/$1/$2';
-$route['404_override'] = 'c_core_404';
+$route['default_controller']    = 'home';
+$route['c_activated/(:any)']    = "c_activated/u/$1";
+$route['comot/(:any)/(:any)']   = 'c_gbox_upload_list/gf_download_email/$1/$2';
+$route['404_override']          = 'c_core_404';
 $route['view/pengajuan/(:any)'] = 'c_prepayment_pengajuan_pre_payment/gf_exec_from_reff/$1';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes']  = FALSE;
+$route['4dm1n']                 = 'c_core_main';
+$route['book-detail']          = 'book_detail';
