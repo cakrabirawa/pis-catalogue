@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Catalog-Z Bootstrap 5.0 HTML Template</title>
+    <title>Publisher Information Catalogue System V 1.0</title>
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/css/templatemo-style.css">
@@ -30,7 +30,7 @@
     <div class="container-fluid tm-container-content tm-mt-20">
         <div class="row mb-4">
             <h2 class="col-6 tm-text-primary">
-                Latest Books
+                🔴 Latest Books
             </h2>
             <div class="col-6 d-flex justify-content-end align-items-center">
                 <form action="" class="tm-text-primary">
@@ -59,20 +59,21 @@
                     </div>-->
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
                         <div class="card" style="">
-                            <img src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" path="<?php print $row['sPathCover']; ?>" class="card-img-top" alt="...">
+                            <img src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" path="<?php print $row['sPathCover']; ?>" class="card-img-top mx-auto d-block" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                                 <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
                                 <footer class="blockquote-footer"><?php print trim($row['sNamaPengarangCover'], 10); ?></footer>
-                                <p class="card-text"><i class="fas fa-calendar-alt"></i> <?php print $row['dTglSTO']; ?></p>
+                                <p class="card-text"><i class="fas fa-calendar-alt"></i> <?php print $row['dTglSTO']; ?> | <i class="fas fa-eye"></i> <?php print trim($row['nViews']) === "" ? 0 : trim($row['nViews']); ?></p>
+                                <p class="card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></p>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item card-text"><?php print $row['sKategorisasiToko']; ?></li>
-                                <!--<li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>-->
-                            </ul>
+                            <!--<ul class="list-group list-group-flush">
+                                <li class="list-group-item card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>-->
                             <div class="card-body">
-                                <a href="<?php print site_url(); ?>book-detail" class="btn btn-primary btn-block btn-sm">View Detail</a>
+                                <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-sm">View Detail</a>
                             </div>
                         </div> 
                     </div> 
@@ -97,45 +98,11 @@
     <?php $this->load->view('frontend/footer'); ?>
     
     <script src="<?php print site_url(); ?>plugins/jquery/jquery-2.2.0.min.js"></script>
-	<script src="<?php print site_url(); ?>plugins/dist/js/jquery-ui.min.js"></script>
 	<script src="<?php print site_url(); ?>plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?php print site_url(); ?>plugins/jquery.bootstrapdialog/bootstrap-dialog.min.js"></script>
-	<script src="<?php print site_url(); ?>plugins/jquery.ado/ado.js"></script>
 
     <script>
         $(window).on("load", function() {
             $('body').addClass('loaded');
-            $("img[id='imgCover']").each(function() {
-                var oImg = $(this);
-                $.ajax({
-                    cors: true ,
-                    dataType: 'json',
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                    },
-                    method: "GET",
-                    url: "http://10.12.42.10/ado/api.php?cmd=iterateimages1&path=S:\\PISELEX\\PROSESPROD\\EMK-NS000000314_Tidur_Berbantalkan_Koran\\COVER",
-                    //data: { name: "John", location: "Boston" }
-                    })
-                    .done(function( msg ) {
-                        alert( "Data Saved: " + msg );
-                    });
-
-                /*fetch('http://10.12.42.10/ado/api.php?cmd=iterateimages1&path=S:\\PISELEX\\PROSESPROD\\EMK-NS000000314_Tidur_Berbantalkan_Koran\\COVER', {
-                    mode: 'no-cors', 
-                    headers: { 
-                        'Access-Control-Allow-Origin': 'http://10.12.42.10',
-                    }
-                })
-                .then(
-                function(res) {
-                    console.log(res.json());
-                }
-                )
-                .catch(function(err) {
-                console.log('Fetch Error :-S', err);
-                });*/
-            })
         });
     </script>
 </body>

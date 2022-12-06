@@ -5,9 +5,13 @@ class book_detail extends CI_Controller {
 	public function __construct() 
 	{ 
 		parent::__construct(); 
+    $this->load->model('book');
   }
 
-  public function index() {
-    $this->load->view('frontend/book-detail');
+  public function gf_view_book_detail($sISBN) {
+    $data['data'] = $this->book->gf_get_latest_book($sISBN);
+    $data['view'] = $this->book->gf_get_view_count($sISBN);
+    $data['related_by_category'] = $this->book->gf_related_book_by_category($sISBN);
+    $this->load->view('frontend/book-detail', $data);
   }
 }

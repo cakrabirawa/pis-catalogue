@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-light bg-light navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="<?php site_url(); ?>img/favicon1.png" class="img-responsive" style="max-width: 40px;" />
+    <a class="navbar-brand" href="<?php print site_url(); ?>">
+      <img src="<?php print site_url(); ?>img/favicon1.png" class="img-responsive" style="max-width: 40px;" />
       Gramedia Pubslihers Catalogue
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,13 +14,13 @@
       </li>
       <!--<li class="nav-item">
           <a class="nav-link nav-link-2" href="<?php site_url(); ?>home">Videos</a>
-      </li>-->
+      </li>
       <li class="nav-item">
           <a class="nav-link nav-link-3" href="<?php site_url(); ?>home">About</a>
       </li>
       <li class="nav-item">
           <a class="nav-link nav-link-4" href="<?php site_url(); ?>home">Contact</a>
-      </li>
+      </li>-->
     </ul>
     </div>
   </div>
