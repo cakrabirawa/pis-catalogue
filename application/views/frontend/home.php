@@ -59,7 +59,7 @@
                     </div>-->
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
                         <div class="card" style="">
-                            <img src="<?php print site_url(); ?>img/img_bg.jpg" path="<?php print $row['sPathCover']; ?>" class="card-img-top" alt="...">
+                            <img src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" path="<?php print $row['sPathCover']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                                 <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
