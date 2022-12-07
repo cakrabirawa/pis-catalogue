@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php print site_url(); ?>">
       <img src="<?php print site_url(); ?>img/favicon1.png" class="img-responsive" style="max-width: 40px;" />
-      Gramedia Pubslihers Catalogue
+      Gramedia Publishers Catalogue
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars"></i>
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
       <li class="nav-item">
-          <a class="nav-link nav-link-1 active" aria-current="page" href="<?php site_url(); ?>home">Books</a>
+          <a class="nav-link nav-link-1 active" aria-current="page" href="<?php site_url(); ?>">Products</a>
       </li>
       <!--<li class="nav-item">
           <a class="nav-link nav-link-2" href="<?php site_url(); ?>home">Videos</a>
