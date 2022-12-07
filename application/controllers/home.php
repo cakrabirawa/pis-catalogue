@@ -5,7 +5,11 @@ class home extends CI_Controller {
 	public function __construct() 
 	{ 
 		parent::__construct(); 
-    $this->load->model('book');
+    $a = new libSession();
+		if ($a->gf_check_session())
+			redirect("c_core_login");
+		else
+      $this->load->model('book');
   }
 
   public function index() {
