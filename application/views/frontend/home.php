@@ -51,7 +51,7 @@
                      foreach($data_sto_this_week_carousel as $row) {
                      ?>
                         <div class="carousel-item <?php print $i === 0 ? "active" : "" ?>" data-bs-interval="4000">
-                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" path="<?php print $row['sPathCover']; ?>" class="d-block w-100" alt="..."></a>
+                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img src="http://api.gramediadigital.com:3299?p=<?php print base64_encode(str_replace("\\COVER\\", "\\COVER\\thumbnail\\", $row['sPathCover'])); ?>" path="<?php print str_replace("\\COVER\\", "\\COVER\\thumbnail\\", $row['sPathCover']); ?>" class="d-block w-100" alt="..."></a>
                             <div class="carousel-caption d-none d-md-block">
                                 <h5><?php print $row['sJudulPerubahan']; ?></h5>
                                 <p><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
@@ -92,7 +92,7 @@
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
                     <div class="card" style="">
-                        <img src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" path="<?php print $row['sPathCover']; ?>" class="card-img-top mx-auto d-block" alt="...">
+                        <img src="http://api.gramediadigital.com:3299?p=<?php print base64_encode(str_replace("\\cover\\", "\\cover\\thumbnail\\", $row['sPathCover'])); ?>" path="<?php print str_replace("\\cover\\", "\\cover\\thumbnail\\", $row['sPathCover']); ?>" class="card-img-top mx-auto d-block" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                             <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>

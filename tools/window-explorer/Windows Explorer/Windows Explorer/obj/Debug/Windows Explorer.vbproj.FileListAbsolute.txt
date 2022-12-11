@@ -1,0 +1,11 @@
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.exe.config
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.exe
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.pdb
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.xml
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows_Explorer.Form1.resources
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows_Explorer.Resources.resources
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.vbproj.GenerateResource.Cache
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.exe
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.xml
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.pdb
+D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.vbprojResolveAssemblyReference.cache
