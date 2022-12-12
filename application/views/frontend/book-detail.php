@@ -44,7 +44,7 @@
         <div class="row tm-mb-90">            
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
                 <div class="">
-                    <img style="margin-bottom: 20px;" src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($data[0]['sPathCover']); ?>" path="<?php print trim($data[0]['sPathCover']); ?>" class="img-fluid" alt="...">
+                    <img style="margin-bottom: 20px;" src="<?php print $data[0]['sNewPathCoverOriginal']; ?>" path="<?php print trim($data[0]['sPathCover']); ?>" class="img-fluid" alt="...">
                 </div>
                 <div class="tm-bg-gray col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="tm-video-details">

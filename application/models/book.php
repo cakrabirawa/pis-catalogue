@@ -8,7 +8,7 @@ class book extends CI_Model
 	}
 
   function gf_get_latest_book($sISBN=null) {
-    $sql = "call sp_query('select a.*, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.sPathCover is not null ";
+    $sql = "call sp_query('select a.*, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.sPathCover is not null ";
 		if($sISBN !== null) {
 			$sql .= " and sISBN = ''".trim($sISBN)."''";
 			//-- Insert view
@@ -33,17 +33,17 @@ class book extends CI_Model
 	}
 
 	function gf_related_book_by_category($sISBN) {
-		$sql = "call sp_query('select a.*, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.sKategorisasi in (select p.sKategorisasi from tm_pisc_book p where p.sISBN = ''".trim($sISBN)."'') and sPathCover is not null ORDER BY RAND() limit 4');";
+		$sql = "call sp_query('select a.*, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.sKategorisasi in (select p.sKategorisasi from tm_pisc_book p where p.sISBN = ''".trim($sISBN)."'') and sPathCover is not null ORDER BY RAND() limit 4');";
 		return json_encode($this->db->query($sql)->result_array());
 	}
 
 	function gf_related_book_by_sto($sISBN) {
-		$sql = "call sp_query('select a.*, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.dTglSTO in (select p.dTglSTO from tm_pisc_book p where p.sISBN = ''".trim($sISBN)."'') and sPathCover is not null ORDER BY RAND() limit 4');";
+		$sql = "call sp_query('select a.*, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where a.dTglSTO in (select p.dTglSTO from tm_pisc_book p where p.sISBN = ''".trim($sISBN)."'') and sPathCover is not null ORDER BY RAND() limit 4');";
 		return json_encode($this->db->query($sql)->result_array());
 	}
 
 	function gf_this_week_sto_carousel() {
-		$sql = "call sp_query('select a.*, str_to_date(a.dTglSTO, ''%d-%M-%Y'') as dTglSTOX, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where YEARWEEK(str_to_date(a.dTglSTO, ''%d-%M-%Y''), 1) = YEARWEEK(CURDATE(), 1)  and sPathCover is not null ORDER BY RAND() limit 6');";
+		$sql = "call sp_query('select a.*, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".site_url()."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, str_to_date(a.dTglSTO, ''%d-%M-%Y'') as dTglSTOX, (select sum(p.nViews) as nViews from tx_pisc_view p where p.sISBN = a.sISBN) as nViews from tm_pisc_book a where /*YEARWEEK(str_to_date(a.dTglSTO, ''%d-%M-%Y''), 1) = YEARWEEK(CURDATE(), 1)  and*/ sPathCover is not null ORDER BY RAND() limit 6');";
 		return json_encode($this->db->query($sql)->result_array());
 	}
 }
