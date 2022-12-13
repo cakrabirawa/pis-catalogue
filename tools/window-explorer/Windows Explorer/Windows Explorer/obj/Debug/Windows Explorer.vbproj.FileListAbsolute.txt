@@ -9,3 +9,7 @@ D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\W
 D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.xml
 D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.pdb
 D:\projects\dotnet\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.vbprojResolveAssemblyReference.cache
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.exe.config
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.exe
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.xml
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.pdb

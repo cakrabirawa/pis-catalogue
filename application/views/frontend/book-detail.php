@@ -44,7 +44,7 @@
         <div class="row tm-mb-90">            
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
                 <div class="">
-                    <img style="margin-bottom: 20px;" src="<?php print $data[0]['sNewPathCoverOriginal']; ?>" path="<?php print trim($data[0]['sPathCover']); ?>" class="img-fluid" alt="...">
+                    <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" style="margin-bottom: 20px;" src="<?php print $data[0]['sNewPathCoverOriginal']; ?>" path="<?php print trim($data[0]['sNewPathCoverOriginal']); ?>" class="img-fluid" alt="...">
                 </div>
                 <div class="tm-bg-gray col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="tm-video-details">
@@ -174,7 +174,7 @@
                     <div class="text-center mb-3">
                         <div class="d-grid gap-2">
                             <a href="#" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
-                            <a href="http://10.12.42.10/pis_elex/c_storage_server/gf_download_cover/<?php print base64_encode($data[0]['sPathCover']); ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
+                            <a href="<?php print $data[0]['sNewPathCoverOriginal']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
                         </div>
                     </div>                    
                     <!--<div class="mb-4">
@@ -200,10 +200,10 @@
                     ?>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                             <figure class="effect-ming tm-video-item">
-                            <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>img/img_no_photo.png';" src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" alt="Image" class="mx-auto d-block"></a>
+                            <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>img/img_no_photo.png';" src="<?php print $row['sNewPathCoverOriginal']; ?>" alt="Image" class="mx-auto d-block"></a>
                                 <figcaption class="d-flex align-items-center justify-content-center">
                                     <h2><?php print $row['sJudulPerubahan']; ?></h2>
-                                    <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>">View more</a>
+                                    <a href="<?php print $row['sNewPathCoverOriginal']; ?>">View more</a>
                                 </figcaption>                    
                             </figure>
                             <div class="d-flex justify-content-between tm-text-gray">
@@ -226,7 +226,7 @@
                     ?>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                             <figure class="effect-ming tm-video-item">
-                            <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>img/img_no_photo.png';" src="http://10.12.42.10/pis_elex/c_storage_server/gf_load_cover/<?php print base64_encode($row['sPathCover']); ?>" alt="Image" class="mx-auto d-block"></a>
+                            <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>img/img_no_photo.png';" src="<?php print $row['sNewPathCoverOriginal']; ?>" alt="Image" class="mx-auto d-block"></a>
                                 <figcaption class="d-flex align-items-center justify-content-center">
                                     <h2><?php print $row['sJudulPerubahan']; ?></h2>
                                     <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>">View more</a>

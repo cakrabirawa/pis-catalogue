@@ -50,13 +50,10 @@
                      $i = 0;
                      foreach($data_sto_this_week_carousel as $row) {
                      ?>
-                        <div class="carousel-item <?php print $i === 0 ? "active" : "" ?>" data-bs-interval="4000">
-<<<<<<< HEAD
-                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img src="http://api.gramediadigital.com:3299?p=<?php print base64_encode(str_replace("\\COVER\\", "\\COVER\\thumbnail\\", $row['sPathCover'])); ?>" path="<?php print str_replace("\\COVER\\", "\\COVER\\thumbnail\\", $row['sPathCover']); ?>" class="d-block w-100" alt="..."></a>
-=======
-                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sPathCover']; ?>" class="d-block w-100" alt="..."></a>
->>>>>>> ba92838a0c4fb1a7912adae8e6bd92187575e573
+                        <div class="carousel-item <?php print $i === 0 ? "active" : "" ?>" data-bs-interval="2000">
+                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><center><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sPathCover']; ?>" class="d-block w-80" alt="..."></center></a>
                             <div class="carousel-caption d-none d-md-block">
+                                <p>&nbsp;</p>
                                 <h5><?php print $row['sJudulPerubahan']; ?></h5>
                                 <p><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
                             </div>
@@ -95,13 +92,8 @@
             foreach($data as $row) {
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
-<<<<<<< HEAD
-                    <div class="card" style="">
-                        <img src="http://api.gramediadigital.com:3299?p=<?php print base64_encode(str_replace("\\cover\\", "\\cover\\thumbnail\\", $row['sPathCover'])); ?>" path="<?php print str_replace("\\cover\\", "\\cover\\thumbnail\\", $row['sPathCover']); ?>" class="card-img-top mx-auto d-block" alt="...">
-=======
                     <div class="card" style="">                        
                         <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block" alt="...">
->>>>>>> ba92838a0c4fb1a7912adae8e6bd92187575e573
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                             <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
