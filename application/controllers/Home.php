@@ -17,4 +17,8 @@ class home extends CI_Controller {
     $this->data['data_sto_this_week_carousel']  = $this->book->gf_this_week_sto_carousel();
     $this->load->view('frontend/home', $this->data);
   }
+
+  function gf_load_cover_by_suuid($sUUID) {
+    $this->book->gf_load_cover_by_suuid($sUUID);
+  }
 }

@@ -173,8 +173,8 @@
                     </div>
                     <div class="text-center mb-3">
                         <div class="d-grid gap-2">
-                            <a href="#" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
-                            <a href="<?php print $data[0]['sNewPathCoverOriginal']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
+                            <a target="_blank" href="#" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
+                            <a target="_blank" href="<?php print site_url()."cover/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
                         </div>
                     </div>                    
                     <!--<div class="mb-4">
@@ -203,7 +203,7 @@
                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>img/img_no_photo.png';" src="<?php print $row['sNewPathCoverOriginal']; ?>" alt="Image" class="mx-auto d-block"></a>
                                 <figcaption class="d-flex align-items-center justify-content-center">
                                     <h2><?php print $row['sJudulPerubahan']; ?></h2>
-                                    <a href="<?php print $row['sNewPathCoverOriginal']; ?>">View more</a>
+                                    <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>">View more</a>
                                 </figcaption>                    
                             </figure>
                             <div class="d-flex justify-content-between tm-text-gray">

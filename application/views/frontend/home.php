@@ -77,14 +77,9 @@
 
 
         <div class="row mb-4">
-            <h2 class="col-6 tm-text-primary">
+            <h4 class="col-6 tm-text-primary">
                 🔴 Latest Books
-            </h2>
-            <div class="col-6 d-flex justify-content-end align-items-center">
-                <form action="" class="tm-text-primary">
-                    Page <input type="text" value="1" size="1" class="tm-input-paging tm-text-primary"> of 200
-                </form>
-            </div>
+            </h4>
         </div>
         <div class="row tm-mb-90 tm-gallery">
         <?php 
@@ -93,7 +88,7 @@
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
                     <div class="card" style="">                        
-                        <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block" alt="...">
+                        <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block">
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                             <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
