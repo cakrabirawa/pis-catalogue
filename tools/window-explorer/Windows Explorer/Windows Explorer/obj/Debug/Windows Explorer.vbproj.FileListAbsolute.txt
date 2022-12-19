@@ -13,3 +13,10 @@ D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Expl
 D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.exe
 D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.xml
 D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.pdb
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.exe
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.pdb
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\bin\Debug\Windows Explorer.xml
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.vbprojResolveAssemblyReference.cache
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows_Explorer.Form1.resources
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows_Explorer.Resources.resources
+D:\projects\php\piscatalogue\tools\window-explorer\Windows Explorer\Windows Explorer\obj\Debug\Windows Explorer.vbproj.GenerateResource.Cache

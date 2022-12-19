@@ -6,6 +6,15 @@ Imports System.IO.File
 Public Class Form1
 
   Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Form1_Resize(sender, e)
+    With ComboBox1
+      For i = 1 To 100
+        If (i Mod 5 = 0) Then
+          ComboBox1.Items.Add(i)
+        End If
+      Next
+      .SelectedIndex = 0
+    End With
   End Sub
 
   Sub gf_load_dir(ByVal sPath As String)
@@ -70,7 +79,7 @@ Public Class Form1
         If txtOuput.Text.Trim <> "" Then
           Copy(sPath & fri.Name, txtOuput.Text.Trim & sOriginalFileName & "\" & "original\" & fri.Name)
           If IsValidImage(sPath & fri.Name) Then
-            ResizeImage(sPath & fri.Name, 0, 20, txtOuput.Text.Trim & sOriginalFileName & "\" & "thumbnail\" & fri.Name)
+            ResizeImage(sPath & fri.Name, 0, CInt(ComboBox1.Text), txtOuput.Text.Trim & sOriginalFileName & "\" & "thumbnail\" & fri.Name)
           End If
         End If
         '--------------------------------
@@ -143,4 +152,12 @@ Public Class Form1
 
     End Try
   End Function
+
+  Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    richLog.Height = Me.Height - 170
+  End Sub
+
+  Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+
+  End Sub
 End Class
