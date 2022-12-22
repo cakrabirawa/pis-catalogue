@@ -30,6 +30,7 @@ Public Class Form1
       Dim fri As DirectoryInfo
       progressBar.Maximum = fiArr.Length
       progressBar.Minimum = 0
+      progressBar.Value = 0
       For Each fri In fiArr
         'If i = 10 Then Exit Sub
         gf_write_log("Loading Path: " & sPath & fri.Name & "\" & "cover" & "\")

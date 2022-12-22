@@ -72,6 +72,7 @@ Partial Class Form1
     Me.progressBar.Margin = New System.Windows.Forms.Padding(2)
     Me.progressBar.Name = "progressBar"
     Me.progressBar.Size = New System.Drawing.Size(496, 32)
+    Me.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous
     Me.progressBar.TabIndex = 4
     '
     'Label1
