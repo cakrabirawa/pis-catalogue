@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Publisher Information Catalogue System V 1.0</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Search Result for <?php print urldecode($data_search); ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/css/templatemo-style.css" />
     <link rel="shortcut icon" type="image/png" href="<?php print site_url(); ?>img/favicon1.png" />
@@ -32,61 +32,19 @@
         <div class="loader-section section-right"></div>
     </div>
     <?php 
-        $this->load->view('frontend/navbar', $data_keyword); 
+        $data['data_search'] = trim($data_search);
+        $this->load->view('frontend/navbar', $data); 
         $data_sto_this_week_carousel = json_decode($data_sto_this_week_carousel, TRUE);
     ?>
     <div class="container-fluid tm-container-content tm-mt-20">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <?php
-                    $i = 0;
-                    foreach($data_sto_this_week_carousel as $row) {
-                    ?>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<?php print $i; ?>" class="active" aria-current="true" aria-label="Slide <?php print $i; ?>"></button>
-                    <?php
-                    $i++;
-                    }
-                    ?>
-            </div>
-            <div class="carousel-inner mb-5">
-                <?php
-                     $i = 0;
-                     foreach($data_sto_this_week_carousel as $row) {
-                     ?>
-                        <div class="carousel-item <?php print $i === 0 ? "active" : "" ?>" data-bs-interval="2000">
-                             <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><center><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" path="<?php print $row['sPathCover']; ?>" class="d-block w-80" alt="..."></center></a>
-                            <div class="carousel-caption d-none d-md-block">
-                                <p>&nbsp;</p>
-                                <h5><?php print $row['sJudulPerubahan']; ?></h5>
-                                <p><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
-                            </div>
-                        </div>
-                    <?php
-                    $i++;
-                     }
-                     ?>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-
-
-
         <div class="row mb-4">
             <h4 class="col-6 tm-text-primary">
-                🔴 Latest Books
+                Search Result for <b><?php print urldecode($data_search); ?></b>
             </h4>
         </div>
         <div class="row tm-mb-90 tm-gallery">
         <?php 
-            $data = json_decode($data_latest, TRUE);
+            $data = json_decode($data_search_list, TRUE);
             foreach($data as $row) {
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
@@ -99,11 +57,6 @@
                             <p class="card-text"><i class="fas fa-calendar-alt"></i> <?php print $row['dTglSTO']; ?> | <i class="fas fa-eye"></i> <?php print trim($row['nViews']) === "" ? 0 : trim($row['nViews']); ?></p>
                             <p class="card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></p>
                         </div>
-                        <!--<ul class="list-group list-group-flush">
-                            <li class="list-group-item card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>-->
                         <div class="card-body">
                             <div class="d-grid gap-2">
                                 <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-sm">View Detail</a>
@@ -115,7 +68,7 @@
             }
         ?>
         </div> <!-- row -->
-        <!--<div class="row tm-mb-90">
+        <div class="row tm-mb-90">
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
                 <div class="tm-paging d-flex">
@@ -126,7 +79,7 @@
                 </div>
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
             </div>            
-        </div>-->
+        </div>
     </div> <!-- container-fluid, tm-container-content -->
 
     <?php $this->load->view('frontend/footer'); ?>

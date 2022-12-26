@@ -9,10 +9,11 @@ class book_detail extends CI_Controller {
   }
 
   public function gf_view_book_detail($sISBN) {
-    $data['data']                 = $this->book->gf_get_latest_book($sISBN);
-    $data['view']                 = $this->book->gf_get_view_count($sISBN);
-    $data['related_by_category']  = $this->book->gf_related_book_by_category($sISBN);
-    $data['related_by_sto']       = $this->book->gf_related_book_by_sto($sISBN);
-    $this->load->view('frontend/book-detail', $data);
+    $this->data['data']                 = $this->book->gf_get_latest_book($sISBN);
+    $this->data['view']                 = $this->book->gf_get_view_count($sISBN);
+    $this->data['related_by_category']  = $this->book->gf_related_book_by_category($sISBN);
+    $this->data['related_by_sto']       = $this->book->gf_related_book_by_sto($sISBN);
+    $this->data['data_keyword']         = $this->book->gf_get_keyword();
+    $this->load->view('frontend/book-detail', $this->data);
   }
 }

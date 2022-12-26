@@ -15,6 +15,7 @@ class home extends CI_Controller {
   public function index() {
     $this->data['data_latest']                  = $this->book->gf_get_latest_book();
     $this->data['data_sto_this_week_carousel']  = $this->book->gf_this_week_sto_carousel();
+    $this->data['data_keyword']         = $this->book->gf_get_keyword();
     $this->load->view('frontend/home', $this->data);
   }
 

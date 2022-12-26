@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'P@ssw0rd@!',
+	'hostname' => '10.12.30.39',
+	'username' => 'pisc',
+	'password' => 'pisc@!',
 	'database' => 'piscataloguedb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

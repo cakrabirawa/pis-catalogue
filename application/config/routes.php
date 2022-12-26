@@ -55,3 +55,5 @@ $route['translate_uri_dashes']  = FALSE;
 $route['view/(:any)']           = 'book_detail/gf_view_book_detail/$1';
 $route['cover/(:any)']          = 'home/gf_load_cover_by_suuid/$1';
 $route['4dm1n']                 = 'c_core_main';
+$route['search/(:any)']         = 'search/gf_search/$1';
+$route['search']                = 'search';
