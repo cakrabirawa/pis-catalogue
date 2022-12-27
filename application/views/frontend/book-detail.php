@@ -44,7 +44,7 @@
 
     <div class="container-fluid tm-container-content tm-mt-20" id="content">
         <div class="row mb-2">
-            <p class="h2"><?php print $data[0]['sJudulPerubahan']; ?></p>
+            <h3 class="tm-text-gray-dark"><?php print $data[0]['sJudulPerubahan']; ?></h3>
         </div>
         <div class="row tm-mb-90">            
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
