@@ -12,6 +12,7 @@
     <script src="<?php print site_url(); ?>plugins/jquery/jquery-2.2.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="<?php print site_url(); ?>plugins/jquery.slimscroll/jquery.slimscroll.min.js"></script>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -84,20 +85,20 @@
                 🔴 Latest Books
             </h4>
         </div>
-        <div class="row tm-mb-90 tm-gallery">
+        <div class="row tm-mb-10 tm-gallery">
         <?php 
             $data = json_decode($data_latest, TRUE);
             foreach($data as $row) {
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
-                    <div class="card">                        
-                        <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block">
+                    <div class="card" id="inner-content-div">                        
+                        <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block"></a>
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                             <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
                             <footer class="blockquote-footer"><?php print trim($row['sNamaPengarangCover'], 10); ?></footer>
                             <p class="card-text"><i class="fas fa-calendar-alt"></i> <?php print $row['dTglSTO']; ?> | <i class="fas fa-eye"></i> <?php print trim($row['nViews']) === "" ? 0 : trim($row['nViews']); ?></p>
-                            <p class="card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></p>
+                            <!--<p class="card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></p>-->
                         </div>
                         <!--<ul class="list-group list-group-flush">
                             <li class="list-group-item card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></li>
@@ -134,6 +135,10 @@
     <script>
         $(window).on("load", function() {
             $('body').addClass('loaded');
+            $("div[id='inner-content-div']").slimScroll({
+                height: '600px'
+            });
+            $("div[id='inner-content-div']").trigger("mouseleave");
         });
     </script>
 </body>

@@ -16,4 +16,8 @@ class book_detail extends CI_Controller {
     $this->data['data_keyword']         = $this->book->gf_get_keyword();
     $this->load->view('frontend/book-detail', $this->data);
   }
+
+  public function gf_print($sISBN) {
+    $this->book->gf_print($sISBN);
+  }
 }

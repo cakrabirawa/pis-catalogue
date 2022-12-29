@@ -1,3 +1,9 @@
+<style>
+  body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+</style>
 <!--<nav class="navbar fixed-top navbar-light bg-light navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php print site_url(); ?>">
@@ -16,14 +22,14 @@
     </div>
   </div>
 </nav>-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?php print site_url(); ?>"><img src="<?php print site_url(); ?>img/favicon1.png" class="img-responsive" style="max-width: 40px;" />Publisher Catalogue</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="<?php print site_url(); ?>">PIS Catalogue</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="z-index: 999;">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php print site_url(); ?>">Home</a>
         </li>
@@ -31,7 +37,6 @@
     </div>
   </div>
 </nav>
-<br />
 <div class="container-fluid tm-container-content">
   <div class="input-group mb-3">
     <input type="text" class="form-control form-control-lg" id="txtSearchBook" placeholder="Search Book Title, Original Author, Category, Product Id, ISBN, Editor, Cover Author etc..." value="<?php print isset($data_search) ? urldecode($data_search) : "" ?>">

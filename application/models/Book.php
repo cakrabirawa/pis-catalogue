@@ -10,7 +10,7 @@ class book extends CI_Model
 	}
 
   function gf_get_latest_book($sISBN=null) {
-    $sql = "call sp_query('select a.*, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, b.nCount as nViews from tm_pisc_book a left join tx_pisc_view_count b on b.sISBN = a.sISBN where a.sPathCover is not null ";
+    $sql = "call sp_query('select a.*, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, b.nCount as nViews from tm_pisc_book a left join tx_pisc_view_count b on b.sISBN = a.sISBN where a.sPathCover is not null and a.sISBN is not null and trim(a.sISBN) <> '''' and a.sISBN <> ''-'' ";
 		if($sISBN !== null) {
 			$sql .= " and a.sISBN = ''".trim($sISBN)."''";
 			//-- Insert view
@@ -66,6 +66,19 @@ class book extends CI_Model
 		die();
   }
 
+	function gf_load_cover_by_suuid1($sUUID) {
+		$DS = DIRECTORY_SEPARATOR;
+		$sql = "call sp_query('select sFileName, sIdNaskah from tm_pisc_book where sUUID = ''".trim($sUUID)."'' ');";
+		$row = $this->db->query($sql)->row_array();
+    $sPath = getcwd().$DS."cover".$DS.$row['sIdNaskah'].$DS."original".$DS.$row['sFileName'];
+		$this->load->library('libImage');
+		header("Content-Type: image/jpeg");
+		$image = new libImage();
+		$image->gfLoad($sPath);
+		$image->gfResizeToHeight(200);
+		$image->gfOutput();
+  }
+
 	function gf_search($sParams=null) {
 		$sql = "call sp_query('select a.*, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, b.nCount as nViews from tm_pisc_book a left join tx_pisc_view_count b on b.sISBN = a.sISBN where a.sJudulPerubahan like ''%".str_replace("'", "`", urldecode(trim($sParams)))."%'' and (a.sISBN is not null and trim(a.sISBN) <> '''' and trim(a.sISBN) <> ''-'') ');";
 		//--------------------------------------------------------
@@ -86,4 +99,130 @@ class book extends CI_Model
 		$sql = "call sp_query('select a.* from tx_pisc_keyword_count a ORDER BY a.nCount desc limit ".$nLimit."');";
 		return json_encode($this->db->query($sql)->result_array());
 	}
+
+	function gf_print($sISBN) {
+    $html = null;
+ 		$this->load->library('pdf');
+
+		// set document information
+		$this->pdf->SetCreator("Publisher Information System Catalogue");
+		$this->pdf->SetAuthor($this->config->item('Publisher Information System Catalogue'));
+		$this->pdf->SetTitle("Production Sheet for ISBN ".$sISBN);
+		$this->pdf->SetSubject('This Report Was Generate From Publisher Information System Catalogue at '.date('d/m/Y H:i:s'));
+
+		$fontname = TCPDF_FONTS::addTTFfont(getcwd().DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."dist".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."tahoma.ttf", 'TrueTypeUnicode', '', 96);
+		$this->pdf->SetFont($fontname, '', 9, '', true);
+
+		$this->pdf->setPrintHeader(false);
+		$this->pdf->setPrintFooter(false);
+		$this->pdf->SetAutoPageBreak(true, 15);
+		$this->pdf->SetMargins(10, 10);
+		$this->pdf->SetDisplayMode(80);
+		$this->pdf->AddPage('P', 'letter');
+
+		$sql = "call sp_query('select * from tm_pisc_book where sISBN = ''".trim($sISBN)."'' ');";
+		$row = $this->db->query($sql)->row_array();
+
+		$html = "<h3>".$row['sJudulRC']."</h3>";
+		$html .= "<table border=\"0\"cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%\">";
+		$html .= "<tr>
+								<td style=\"width:18%;\">No ISBN</td>
+								<td style=\"width:2%;\">:</td>
+								<td style=\"width:40%\">".str_replace("-", "", $row['sISBN'])."</td>
+							</tr>
+							<tr>
+								<td>Judul Asli</td>
+								<td>:</td>
+								<td>".$row['sJudulRC']."</td>
+							</tr>
+							<tr>
+								<td>Judul Terbit</td>
+								<td>:</td>
+								<td>".$row['sJudulPerubahan']."</td>
+							</tr>
+							<tr>
+								<td>Pengarang</td>
+								<td>:</td>
+								<td>".$row['sDetailPengarang']."</td>
+							</tr>
+							<tr>
+								<td>Format Cover</td>
+								<td>:</td>
+								<td>".$row['sNamaTipeCoverProduk']."</td>
+							</tr>
+							<tr>
+								<td>Isi</td>
+								<td>:</td>
+								<td>".$row['sKertasIsi']."</td>
+							</tr>
+							<tr>
+								<td>Kertas</td>
+								<td>:</td>
+								<td>".$row['sNamaTipeKertasProduk']."</td>
+							</tr>
+							<tr>
+								<td>Halaman</td>
+								<td>:</td>
+								<td>".number_format($row['nTotalTebal'])." Hlm</td>
+							</tr>
+							<tr>
+								<td>Penerbit</td>
+								<td>:</td>
+								<td>".$row['sNamaUnit']."</td>
+							</tr>
+							<tr>
+								<td>Kategorisasi Internal</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sKategorisasi']."</td>
+							</tr>
+							<tr>
+								<td>Kategorisasi Toko</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sKategorisasiToko']."</td>
+							</tr>
+							<tr>
+								<td>Target Pengguna</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sTargetPengguna']."</td>
+							</tr>
+							<tr>
+								<td>Sinopsis</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sPenjelasanProduk']."</td>
+							</tr>
+							<tr>
+								<td>Selling Point</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sSellingPoint']."</td>
+							</tr>
+							<tr>
+								<td>Informasi Tambahan</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sInformasiTambahan']."</td>
+							</tr>
+							<tr>
+								<td>Kelengkapan</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['sKelengkapan']."</td>
+							</tr>
+							<tr>
+								<td>Tanggal Realisasi STO</td>
+								<td>:</td>
+								<td colspan=\"2\">".$row['dTglSTO']."</td>
+							</tr>
+						</table>";
+
+		$this->pdf->writeHTML($html, true, false, false, false, '');
+		$this->pdf->Output($sISBN."_".date('d/m/Y H:i:s').".pdf", 'I');
+  }
+
+	function gf_render_image($sPath=null)
+	{
+		$this->load->library('libImage');
+		header("Content-Type: image/jpeg");
+		$image = new libimage();
+		$image->gfLoad($sPath);
+		$image->gfResizeToHeight(300);
+		$image->gfOutput();
+	}	
 }

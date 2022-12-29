@@ -179,7 +179,7 @@
                     </div>
                     <div class="text-center mb-3">
                         <div class="d-grid gap-2">
-                            <a target="_blank" href="#" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
+                            <a target="_blank" href="<?php print site_url(); ?>print/<?php print $data[0]['sISBN']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
                             <a target="_blank" href="<?php print site_url()."cover/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
                         </div>
                     </div>                    

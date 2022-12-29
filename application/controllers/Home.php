@@ -22,4 +22,8 @@ class home extends CI_Controller {
   function gf_load_cover_by_suuid($sUUID) {
     $this->book->gf_load_cover_by_suuid($sUUID);
   }
+
+  function gf_load_cover_by_suuid1($sUUID) {
+    $this->book->gf_load_cover_by_suuid1($sUUID);
+  }
 }
