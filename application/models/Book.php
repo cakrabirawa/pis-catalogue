@@ -75,7 +75,7 @@ class book extends CI_Model
 		header("Content-Type: image/jpeg");
 		$image = new libImage();
 		$image->gfLoad($sPath);
-		$image->gfResizeToHeight(200);
+		$image->gfResizeToHeight(500);
 		$image->gfOutput();
   }
 
@@ -102,23 +102,6 @@ class book extends CI_Model
 
 	function gf_print($sISBN) {
     $html = null;
- 		$this->load->library('pdf');
-
-		// set document information
-		$this->pdf->SetCreator("Publisher Information System Catalogue");
-		$this->pdf->SetAuthor($this->config->item('Publisher Information System Catalogue'));
-		$this->pdf->SetTitle("Production Sheet for ISBN ".$sISBN);
-		$this->pdf->SetSubject('This Report Was Generate From Publisher Information System Catalogue at '.date('d/m/Y H:i:s'));
-
-		$fontname = TCPDF_FONTS::addTTFfont(getcwd().DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."dist".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."tahoma.ttf", 'TrueTypeUnicode', '', 96);
-		$this->pdf->SetFont($fontname, '', 9, '', true);
-
-		$this->pdf->setPrintHeader(false);
-		$this->pdf->setPrintFooter(false);
-		$this->pdf->SetAutoPageBreak(true, 15);
-		$this->pdf->SetMargins(10, 10);
-		$this->pdf->SetDisplayMode(80);
-		$this->pdf->AddPage('P', 'letter');
 
 		$sql = "call sp_query('select * from tm_pisc_book where sISBN = ''".trim($sISBN)."'' ');";
 		$row = $this->db->query($sql)->row_array();
@@ -128,37 +111,37 @@ class book extends CI_Model
 		$html .= "<tr>
 								<td style=\"width:18%;\">No ISBN</td>
 								<td style=\"width:2%;\">:</td>
-								<td style=\"width:40%\">".str_replace("-", "", $row['sISBN'])."</td>
+								<td style=\"width:80%\">".str_replace("-", "", $row['sISBN'])."</td>
 							</tr>
 							<tr>
 								<td>Judul Asli</td>
 								<td>:</td>
-								<td>".$row['sJudulRC']."</td>
+								<td>".trim($row['sJudulRC'])."</td>
 							</tr>
 							<tr>
 								<td>Judul Terbit</td>
 								<td>:</td>
-								<td>".$row['sJudulPerubahan']."</td>
+								<td>".trim($row['sJudulPerubahan'])."</td>
 							</tr>
 							<tr>
 								<td>Pengarang</td>
 								<td>:</td>
-								<td>".$row['sDetailPengarang']."</td>
+								<td>".trim($row['sDetailPengarang'])."</td>
 							</tr>
 							<tr>
 								<td>Format Cover</td>
 								<td>:</td>
-								<td>".$row['sNamaTipeCoverProduk']."</td>
+								<td>".trim($row['sNamaTipeCoverProduk'])."</td>
 							</tr>
 							<tr>
 								<td>Isi</td>
 								<td>:</td>
-								<td>".$row['sKertasIsi']."</td>
+								<td>".trim($row['sKertasIsi'])."</td>
 							</tr>
 							<tr>
 								<td>Kertas</td>
 								<td>:</td>
-								<td>".$row['sNamaTipeKertasProduk']."</td>
+								<td>".trim($row['sNamaTipeKertasProduk'])."</td>
 							</tr>
 							<tr>
 								<td>Halaman</td>
@@ -168,50 +151,68 @@ class book extends CI_Model
 							<tr>
 								<td>Penerbit</td>
 								<td>:</td>
-								<td>".$row['sNamaUnit']."</td>
+								<td>".trim($row['sNamaUnit'])."</td>
 							</tr>
 							<tr>
 								<td>Kategorisasi Internal</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sKategorisasi']."</td>
+								<td colspan=\"2\">".trim($row['sKategorisasi'])."</td>
 							</tr>
 							<tr>
 								<td>Kategorisasi Toko</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sKategorisasiToko']."</td>
+								<td colspan=\"2\">".trim($row['sKategorisasiToko'])."</td>
 							</tr>
 							<tr>
 								<td>Target Pengguna</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sTargetPengguna']."</td>
+								<td colspan=\"2\">".trim($row['sTargetPengguna'])."</td>
 							</tr>
 							<tr>
 								<td>Sinopsis</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sPenjelasanProduk']."</td>
+								<td colspan=\"2\">".preg_replace('/[[:^print:]]/', '', trim($row['sPenjelasanProduk']))."</td>
 							</tr>
 							<tr>
 								<td>Selling Point</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sSellingPoint']."</td>
+								<td colspan=\"2\">".trim($row['sSellingPoint'])."</td>
 							</tr>
 							<tr>
 								<td>Informasi Tambahan</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sInformasiTambahan']."</td>
+								<td colspan=\"2\">".trim($row['sInformasiTambahan'])."</td>
 							</tr>
 							<tr>
 								<td>Kelengkapan</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['sKelengkapan']."</td>
+								<td colspan=\"2\">".trim($row['sKelengkapan'])."</td>
 							</tr>
 							<tr>
 								<td>Tanggal Realisasi STO</td>
 								<td>:</td>
-								<td colspan=\"2\">".$row['dTglSTO']."</td>
+								<td colspan=\"2\">".trim($row['dTglSTO'])."</td>
+							</tr>
+							<tr>
+								<td>Cover</td>
+								<td>:</td>
+								<td><img src=\"".site_url()."coverx/".trim($row['sUUID'])." /></td>
 							</tr>
 						</table>";
 
+		$this->load->library('pdf');
+		$this->pdf->SetCreator("Publisher Information System Catalogue");
+		$this->pdf->SetAuthor($this->config->item('Publisher Information System Catalogue'));
+		$this->pdf->SetTitle("Production Sheet for ISBN ".$sISBN);
+		$this->pdf->SetSubject('This Report Was Generate From Publisher Information System Catalogue at '.date('d/m/Y H:i:s'));
+		$fontname = TCPDF_FONTS::addTTFfont(getcwd().DIRECTORY_SEPARATOR."plugins".DIRECTORY_SEPARATOR."dist".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."tahoma.ttf", 'TrueTypeUnicode', '', 96);
+		$this->pdf->SetFont($fontname, '', 9, '', true);
+		$this->pdf->setPrintHeader(false);
+		$this->pdf->setPrintFooter(false);
+		$this->pdf->SetAutoPageBreak(true, 15);
+		$this->pdf->SetMargins(10, 10);
+		$this->pdf->SetDisplayMode(80);
+		$this->pdf->AddPage('P', 'letter');
 		$this->pdf->writeHTML($html, true, false, false, false, '');
 		$this->pdf->Output($sISBN."_".date('d/m/Y H:i:s').".pdf", 'I');
   }
