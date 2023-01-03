@@ -22,9 +22,12 @@
     </div>
   </div>
 </nav>-->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?php print site_url(); ?>">PIS Catalogue</a>
+    <a class="navbar-brand" href="<?php print site_url(); ?>">
+      <img src="<?php print site_url(); ?>img/favicon1.png" class="img-responsive" style="max-width: 30px;" />
+      PIS Catalogue
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,30 +36,35 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php print site_url(); ?>">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<?php print site_url(); ?>category">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<?php print site_url(); ?>soon">Comming Soon</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="container-fluid tm-container-content">
   <div class="input-group mb-3">
-    <input type="text" class="form-control form-control-lg" id="txtSearchBook" placeholder="Search Book Title, Original Author, Category, Product Id, ISBN, Editor, Cover Author etc..." value="<?php print isset($data_search) ? urldecode($data_search) : "" ?>">
-    <button class="btn btn-primary" type="button" id="cmdSearchBook"><i class="fas fa-search"></i>&nbsp;Search</button>
+    <input type="text" class="form-control" id="txtSearchBook" placeholder="Search Book Title, Original Author, Category, Product Id, ISBN, Editor, Cover Author etc..." value="<?php print isset($data_search) ? urldecode($data_search) : "" ?>">
+    <button class="btn btn-dark" type="button" id="cmdSearchBook"><i class="fas fa-search"></i> Search</button>
   </div>
 </div>
 <div class="container-fluid tm-container-content">
   Popular Search Word: 
   <?php
-    $a = array(
-              array ("keyword" => "ayam", "count" => 10),
-              array ("keyword" => "chicken", "count" => 87),
-              array ("keyword" => "cooking", "count" => 37),
-              array ("keyword" => "vb.net", "count" => 27),
-    );
     $data_keyword = json_decode($data_keyword, TRUE);
     $i = 0;
+    $bg = array("bg-secondary");
     foreach($data_keyword as $data) {
+      //$random_keys = array_rand($bg);
       ?>
-        <a href="<?php print site_url(); ?>search/<?php print trim($data['sKeywordName']); ?>" class="tm-text-primary"><?php print $data['sKeywordName']; ?> (<?php print $data['nCount']; ?>)</a>
+        <!--<a href="<?php print site_url(); ?>search/<?php print trim($data['sKeywordName']); ?>" class="tm-text-primary"><?php print $data['sKeywordName']; ?> (<?php print $data['nCount']; ?>)</a>-->
+        <a type="button" class="btn btn-light btn-sm" href="<?php print site_url(); ?>search/<?php print trim($data['sKeywordName']); ?>">
+        <?php print $data['sKeywordName']; ?> <span class="badge bg-secondary"><?php print $data['nCount']; ?></span>
+        </a>
       <?php
       $i++;
     }

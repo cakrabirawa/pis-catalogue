@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Result for <?php print urldecode($data_search); ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="<?php print site_url(); ?>assets/css/templatemo-style.css" />
     <link rel="shortcut icon" type="image/png" href="<?php print site_url(); ?>img/favicon1.png" />
@@ -12,6 +12,7 @@
     <script src="<?php print site_url(); ?>plugins/jquery/jquery-2.2.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <script src="<?php print site_url(); ?>plugins/jquery.slimscroll/jquery.slimscroll.min.js"></script>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,6 +24,7 @@
     <style>
         body { font-family: 'Poppins', sans-serif !important; }
     </style>
+
 
 </head>
 <body>
@@ -48,8 +50,8 @@
             foreach($data as $row) {
             ?>
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-5">
-                    <div class="card">                        
-                        <img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block">
+                    <div class="card" id="inner-content-div">                        
+                    <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block" ></a>
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
                             <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
@@ -59,7 +61,7 @@
                         </div>
                         <div class="card-body">
                             <div class="d-grid gap-2">
-                                <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-sm">View Detail</a>
+                                <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-lg">View Detail</a>
                             </div>
                         </div>
                     </div> 
@@ -87,6 +89,10 @@
     <script>
         $(window).on("load", function() {
             $('body').addClass('loaded');
+            $("div[id='inner-content-div']").slimScroll({
+                height: '400px'
+            });
+            $("div[id='inner-content-div']").trigger("mouseleave");
         });
     </script>
 </body>

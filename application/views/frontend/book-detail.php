@@ -107,81 +107,81 @@
                         <h3 class="tm-text-gray-dark">Product Detail</h3>
                     </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Product Id: </span><span class="tm-text-primary"><?php print $data[0]['sNoProduk']; ?></span>
+                            <span class="tm-text-gray-dark">Product Id: </span><span class="tm-text-gray-dark"><?php print $data[0]['sNoProduk']; ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">ISBN: </span><span class="tm-text-primary"><?php print $data[0]['sISBN']; ?></span>
+                            <span class="tm-text-gray-dark">ISBN: </span><span class="tm-text-gray-dark"><?php print $data[0]['sISBN']; ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">ISBN Lengkap: </span><span class="tm-text-primary"> <?php print $data[0]['sISBNLengkap']; ?></span>
+                            <span class="tm-text-gray-dark">ISBN Lengkap: </span><span class="tm-text-gray-dark"> <?php print $data[0]['sISBNLengkap']; ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">ISBN Digital: </span><span class="tm-text-primary"> <?php print trim($data[0]['sISBNDigital']) === "" ? "-" : trim($data[0]['sISBNDigital']); ?></span>
+                            <span class="tm-text-gray-dark">ISBN Digital: </span><span class="tm-text-gray-dark"> <?php print trim($data[0]['sISBNDigital']) === "" ? "-" : trim($data[0]['sISBNDigital']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">ISSN: </span><span class="tm-text-primary"> <?php print trim($data[0]['sISSN']) === "" ? "-" : trim($data[0]['sISSN']); ?></span>
+                            <span class="tm-text-gray-dark">ISSN: </span><span class="tm-text-gray-dark"> <?php print trim($data[0]['sISSN']) === "" ? "-" : trim($data[0]['sISSN']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Estimated Published Date: </span><span class="tm-text-primary"> <?php print $data[0]['dTglEstimasiSTO']; ?></span>
+                            <span class="tm-text-gray-dark">Estimated Published Date: </span><span class="tm-text-gray-dark"> <?php print $data[0]['dTglEstimasiSTO']; ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Real Published Date: </span><span class="tm-text-primary"> <?php print $data[0]['dTglSTO']; ?></span>
+                            <span class="tm-text-gray-dark">Real Published Date: </span><span class="tm-text-gray-dark"> <?php print $data[0]['dTglSTO']; ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Original Author: </span><span class="tm-text-primary"><?php print trim($data[0]['sDetailPengarang']); ?></span>
+                            <span class="tm-text-gray-dark">Original Author: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sDetailPengarang']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Cover Author: </span><span class="tm-text-primary"><?php print trim($data[0]['sNamaPengarangCover']); ?></span>
+                            <span class="tm-text-gray-dark">Cover Author: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sNamaPengarangCover']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Cover Format: </span><span class="tm-text-primary"><?php print trim($data[0]['sNamaTipeCoverProduk']); ?></span>
+                            <span class="tm-text-gray-dark">Cover Format: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sNamaTipeCoverProduk']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Paper: </span><span class="tm-text-primary"><?php print trim($data[0]['sNamaTipeKertasProduk']); ?></span>
+                            <span class="tm-text-gray-dark">Paper: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sNamaTipeKertasProduk']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Content: </span><span class="tm-text-primary"><?php print trim($data[0]['sKertasIsi']); ?></span>
+                            <span class="tm-text-gray-dark">Content: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sKertasIsi']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Store Category: </span><span class="tm-text-primary"><?php print trim($data[0]['sKategorisasiToko']); ?></span>
+                            <span class="tm-text-gray-dark">Store Category: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sKategorisasiToko']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Publishers Category: </span><span class="tm-text-primary"><?php print trim($data[0]['sKategorisasi']); ?></span>
+                            <span class="tm-text-gray-dark">Publishers Category: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sKategorisasi']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Product Size: </span><span class="tm-text-primary"><?php print trim($data[0]['sUkuran']); ?> CM</span>
+                            <span class="tm-text-gray-dark">Product Size: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sUkuran']); ?> CM</span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Editor: </span><span class="tm-text-primary"><?php print trim($data[0]['sEditor']); ?></span>
+                            <span class="tm-text-gray-dark">Editor: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sEditor']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Pages: </span><span class="tm-text-primary"><?php print trim($data[0]['nTotalTebal']); ?></span>
+                            <span class="tm-text-gray-dark">Pages: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['nTotalTebal']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Materi: </span><span class="tm-text-primary"><?php print trim($data[0]['sNamaSpekMateri']); ?></span>
+                            <span class="tm-text-gray-dark">Materi: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['sNamaSpekMateri']); ?></span>
                         </div>
                         <div class="mr-4 mb-2">
-                            <span class="tm-text-gray-dark">Estimated Production Process Date: </span><span class="tm-text-primary"><?php print trim($data[0]['dTglRencanaProduksi']); ?></span>
+                            <span class="tm-text-gray-dark">Estimated Production Process Date: </span><span class="tm-text-gray-dark"><?php print trim($data[0]['dTglRencanaProduksi']); ?></span>
                         </div>
                     <div class="mb-2">
                         <h3 class="tm-text-gray-dark">Publishers</h3>
-                        <p class="tm-text-primary"><b><?php print trim($data[0]['sNamaUnit']); ?></b></p>
+                        <p class="tm-text-gray-dark"><b><?php print trim($data[0]['sNamaUnit']); ?></b></p>
                     </div>
                     <div>
                         <h3 class="tm-text-gray-dark mb-3">Reader Target</h3>
                         <?php
                             foreach(explode(",", trim($data[0]['sTargetPengguna'])) as $row) {
                                 ?>
-                                    <a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block"><?php print $row; ?></a>
+                                    <a href="#" class="tm-text-gray-dark mr-4 mb-2 d-inline-block"><?php print $row; ?></a>
                                 <?php
                             }
                         ?>
                     </div>
                     <div class="text-center mb-3">
                         <div class="d-grid gap-2">
-                            <a target="_blank" href="<?php print site_url(); ?>print/<?php print $data[0]['sISBN']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-print"></i> Print Product Sheet</a>
-                            <a target="_blank" href="<?php print site_url()."cover/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Cover</a>
-                            <a target="_blank" href="<?php print site_url()."coverx/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block tm-btn-big"><i class="fas fa-download"></i> Download Small Cover</a>
+                            <a target="_blank" href="<?php print site_url(); ?>print/<?php print $data[0]['sISBN']; ?>" class="btn btn-primary btn-block"><i class="fas fa-print"></i> Print Product Sheet</a>
+                            <a target="_blank" href="<?php print site_url()."cover/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block "><i class="fas fa-download"></i> Download Cover</a>
+                            <a target="_blank" href="<?php print site_url()."coverx/".$data[0]['sUUID']; ?>" class="btn btn-primary btn-block "><i class="fas fa-download"></i> Download Small Cover</a>
                         </div>
                     </div>                    
                     <!--<div class="mb-4">
@@ -197,7 +197,7 @@
             </div>
         </div>
         <div class="row mb-4">
-            <h2 class="col-12 tm-text-primary">
+            <h2 class="col-12 tm-text-gray-dark">
                 Related Product By Category
             </h2>
         </div>
@@ -223,7 +223,7 @@
                 ?>
         </div> 
         <div class="row mb-4">
-            <h2 class="col-12 tm-text-primary">
+            <h2 class="col-12 tm-text-gray-dark">
                 Related Product By Published Date
             </h2>
         </div>

@@ -27,8 +27,8 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #3498db;
-    -webkit-animation: 2s linear infinite spin;
-    animation: 2s linear infinite spin;
+    -webkit-animation: 1s linear infinite spin;
+    animation: 1s linear infinite spin;
     z-index: 1002;
 }
 #loader:before {
@@ -39,8 +39,8 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #e74c3c;
-    -webkit-animation: 3s linear infinite spin;
-    animation: 3s linear infinite spin;
+    -webkit-animation: 2s linear infinite spin;
+    animation: 2s linear infinite spin;
 }
 #loader:after {
     top: 15px;
@@ -50,8 +50,8 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #f9c922;
-    -webkit-animation: 1.5s linear infinite spin;
-    animation: 1.5s linear infinite spin;
+    -webkit-animation: 1s linear infinite spin;
+    animation: 1s linear infinite spin;
 }
 @-webkit-keyframes spin {
     0% {
@@ -125,13 +125,14 @@
 a {
     text-decoration: none;
     transition: 0.3s;
+    color: rgb(62, 55, 55);
 }
 p {
-    line-height: 1.8;
+    line-height: 1.5;
 }
 .tm-text-primary,
 a:hover {
-    color: #099;
+    color: rgb(255, 0, 0);
 }
 .container-fluid {
     max-width: 1770px;
@@ -139,24 +140,18 @@ a:hover {
 .tm-container-small {
     max-width: 1050px;
 }
-.btn,
-select.form-control {
-    border-radius: 0;
-}
 .btn-primary {
-    background-color: #099;
+    background-color: rgb(244, 9, 9);
     border: 0;
     border-radius: 5px;
-    padding: 12px 50px 14px;
-    font-size: 1.2rem;
 }
 .btn-primary:focus,
 .btn-primary:hover {
-    background-color: #086969;
+    background-color: #f64747;
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
-    background-color: #099;
+    background-color: rgb(246, 114, 114);
     pointer-events: all;
     cursor: not-allowed;
 }
@@ -202,7 +197,7 @@ a.tm-text-primary:hover {
 .tm-paging-link.active,
 .tm-paging-link:hover,
 .tm-search-btn {
-    background-color: #099;
+    background-color: rgb(244, 9, 9);
     color: #fff;
 }
 .tm-social-links li:last-child {

@@ -95,19 +95,12 @@
                         <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>"><img onerror="this.onerror=null;this.src='<?php print site_url(); ?>/img/img_no_photo.png'" src="<?php print $row['sNewPathCoverThumbnail']; ?>" class="card-img-top mx-auto d-block"></a>
                         <div class="card-body">
                             <h5 class="card-title"><?php print $row['sNoProduk']; ?></h5>
-                            <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?></p>
+                            <p class="card-text"><?php print word_limiter($row['sPenjelasanProduk'], 10); ?> more</p>
                             <footer class="blockquote-footer"><?php print trim($row['sNamaPengarangCover'], 10); ?></footer>
                             <p class="card-text"><i class="fas fa-calendar-alt"></i> <?php print $row['dTglSTO']; ?> | <i class="fas fa-eye"></i> <?php print trim($row['nViews']) === "" ? 0 : trim($row['nViews']); ?></p>
                             <!--<p class="card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></p>-->
-                        </div>
-                        <!--<ul class="list-group list-group-flush">
-                            <li class="list-group-item card-text"><?php print trim($row['sKategorisasiToko']) === "-" ? trim($row['sKategorisasi']) : trim($row['sKategorisasiToko']); ?></li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                        </ul>-->
-                        <div class="card-body">
                             <div class="d-grid gap-2">
-                                <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-sm">View Detail</a>
+                                <a href="<?php print site_url(); ?>view/<?php print $row['sISBN']; ?>" class="btn btn-primary btn-block btn-lg">View Detail</a>
                             </div>
                         </div>
                     </div> 
@@ -136,7 +129,7 @@
         $(window).on("load", function() {
             $('body').addClass('loaded');
             $("div[id='inner-content-div']").slimScroll({
-                height: '600px'
+                height: '400px'
             });
             $("div[id='inner-content-div']").trigger("mouseleave");
         });
