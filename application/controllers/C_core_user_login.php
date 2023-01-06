@@ -29,7 +29,6 @@ class c_core_user_login extends CI_Controller
 	function index()
 	{
 		$this->data['o_mode'] = "I";
-		$this->data['o_divisi'] = $this->m_core_apps->gf_load_select_option(array("sSQL" => "select sNamaDivisi, nIdDivisi  from tm_prepayment_divisi where sStatusDelete is null and nUnitId_fk = ".$this->nUnitId, "sFieldId" => "nIdDivisi", "sFieldValues" => "sNamaDivisi", ));	
 		$this->data['o_user_group'] = $this->m_core_apps->gf_load_select_option(array("bDisabledUnitId" => true, "sSQL" => "select nGroupUserId, sGroupUserName from tm_user_groups where sStatusDelete is null and nGroupUserId <> 0", "sFieldId" => "nGroupUserId", "sFieldValues" => "sGroupUserName"));
 		$this->data['o_unit'] = $this->m_core_user_login->gf_load_unit();
 		$this->data['o_group'] = $this->m_core_user_login->gf_load_group();
@@ -59,7 +58,6 @@ class c_core_user_login extends CI_Controller
 		$this->data['o_mode'] = "";
 		$this->data['o_unit'] = $this->m_core_user_login->gf_load_unit(array("bFill" => true, "nUserId" => $this->data['o_data'][0]['nUserId']));
 		$this->data['o_group'] = $this->m_core_user_login->gf_load_group(array("bFill" => true, "nUserId" => $this->data['o_data'][0]['nUserId']));
-		$this->data['o_divisi'] = $this->m_core_apps->gf_load_select_option(array("sSQL" => "select sNamaDivisi, nIdDivisi  from tm_prepayment_divisi where sStatusDelete is null and nUnitId_fk = ".$this->nUnitId, "sFieldId" => "nIdDivisi", "sFieldValues" => "sNamaDivisi", ));	
 		$this->data['o_user_group'] = $this->m_core_apps->gf_load_select_option(array("bDisabledUnitId" => true, "sSQL" => "select nGroupUserId, sGroupUserName from tm_user_groups where sStatusDelete is null and nGroupUserId <> 0", "sFieldId" => "nGroupUserId", "sFieldValues" => "sGroupUserName"));
 		$this->load->view($this->data['o_page'] , $this->data); 
 	}

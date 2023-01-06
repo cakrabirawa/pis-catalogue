@@ -93,11 +93,12 @@ class book extends CI_Model
 		$sql .= "select a.*, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, b.nCount as nViews from tm_pisc_book a left join tx_pisc_view_count b on b.sISBN = a.sISBN where trim(a.sNamaUnit) like ''%".str_replace("'", "`", urldecode(trim($sParams)))."%'' and (a.sISBN is not null and trim(a.sISBN) <> '''' and trim(a.sISBN) <> ''-'') ";
 		$sql .= " union all ";
 		$sql .= "select a.*, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/original/'', a.sFileName) as sNewPathCoverOriginal, concat(''".$this->sPathCover."cover'', ''/'', a.sIdNaskah, ''/thumbnail/'', a.sFileName) as sNewPathCoverThumbnail, b.nCount as nViews from tm_pisc_book a left join tx_pisc_view_count b on b.sISBN = a.sISBN where trim(a.sISBN) = ''".str_replace("'", "`", urldecode(trim($sParams)))."'' and (a.sISBN is not null and trim(a.sISBN) <> '''' and trim(a.sISBN) <> ''-'') ";
-		$sql .= ") as c order by sFileName asc ";
+		$sql .= ") as c /*order by sFileName asc*/ ";
 		$sql .= "');";
 		//--------------------------------------------------------
 		$sqlx = "call sp_query('insert into tx_pisc_search_keyword (sKeywordName, nUserId_fk, sRealName, dKeywordSearchDate) values (''". urldecode(trim($sParams))."'', ".trim($this->session->userdata('nUserId')).", ''".trim($this->session->userdata('sRealName'))."'', CURRENT_TIMESTAMP)');";
 		//--------------------------------------------------------
+		//exit($sql);
 		$this->db->trans_begin(); 
 		$this->db->query($sqlx);
 		if ($this->db->trans_status() === FALSE) 

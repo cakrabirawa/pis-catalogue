@@ -211,10 +211,6 @@ class m_core_user_login extends CI_Model
 
 		$sUserGroups = $this->m_core_apps->gf_load_select_option(array("sSQL" => "select nGroupUserId, sGroupUserName  from tm_user_groups where sStatusDelete is null ", "sFieldId" => "nGroupUserId", "sFieldValues" => "sGroupUserName"));				
 
-		$sDivisi = $this->m_core_apps->gf_load_select_option(array("sSQL" => "select nIdDivisi, sNamaDivisi  from tm_prepayment_divisi where sStatusDelete is null ", "sFieldId" => "nIdDivisi", "sFieldValues" => "sNamaDivisi"));				
-
-		$sDept = $this->m_core_apps->gf_load_select_option(array("sSQL" => "select nIdDepartemen, upper(sNamaDepartemen) as sNamaDepartemen  from tm_prepayment_departemen where sStatusDelete is null ", "sFieldId" => "nIdDepartemen", "sFieldValues" => "sNamaDepartemen"));				
-
 		$sData = "";
 		if (array_key_exists("bFill", $sParams)) {
 			$sql = "call sp_query('select a.nGroupUserId, a.sGroupUserName from tm_user_groups a inner join tm_user_logins_groups b on b.nGroupUserId_fk = a.nGroupUserId where a.sStatusDelete is null and b.sStatusDelete is null and b.nUserId_fk = ".trim($sParams['nUserId'])."')";

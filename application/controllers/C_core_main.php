@@ -15,7 +15,7 @@ class c_core_main extends CI_Controller
 		if ($a->gf_check_session())
 			redirect("c_core_login");
 		else
-			$this->load->model(array('m_core_login', 'm_core_user_menu', 'm_prepayment_karyawan', 'm_prepayment_pengajuan_pre_payment', 'm_core_user_login', 'm_core_apps', 'm_core_main', 'm_core_chart'));
+			$this->load->model(array('m_core_login', 'm_core_user_menu', 'm_core_user_login', 'm_core_apps', 'm_core_main'));
 	}
 	public function index()
 	{
